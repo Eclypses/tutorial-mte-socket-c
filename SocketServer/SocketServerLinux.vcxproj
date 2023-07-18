@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{70b99e42-74f0-4347-9868-70e387b00ac0}</ProjectGuid>
+    <Keyword>Linux</Keyword>
+    <RootNamespace>SocketServerLinux</RootNamespace>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
+    <ApplicationType>Linux</ApplicationType>
+    <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
+    <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
+    <LinuxProjectType>{2238F9CD-F817-4ECC-BD14-2524D2669B35}</LinuxProjectType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <ItemGroup>
+    <ClCompile Include="main.c" />
+    <ClCompile Include="server_mte_helper.c" />
+    <ClCompile Include="socket_manager.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\common\globals.h" />
+    <ClInclude Include="..\ecdh\include\mtesupport_ecdh.h" />
+    <ClInclude Include="..\ecdh\include\platform.h" />
+    <ClInclude Include="..\MTE\include\mte_alloca.h" />
+    <ClInclude Include="..\MTE\include\mte_base.h" />
+    <ClInclude Include="..\MTE\include\mte_base64.h" />
+    <ClInclude Include="..\MTE\include\mte_ciphers.h" />
+    <ClInclude Include="..\MTE\include\mte_cipher_defs.h" />
+    <ClInclude Include="..\MTE\include\mte_dec.h" />
+    <ClInclude Include="..\MTE\include\mte_drbgs.h" />
+    <ClInclude Include="..\MTE\include\mte_drbg_defs.h" />
+    <ClInclude Include="..\MTE\include\mte_enc.h" />
+    <ClInclude Include="..\MTE\include\mte_export.h" />
+    <ClInclude Include="..\MTE\include\mte_flen_enc.h" />
+    <ClInclude Include="..\MTE\include\mte_hashes.h" />
+    <ClInclude Include="..\MTE\include\mte_hash_defs.h" />
+    <ClInclude Include="..\MTE\include\mte_init.h" />
+    <ClInclude Include="..\MTE\include\mte_init_info.h" />
+    <ClInclude Include="..\MTE\include\mte_int.h" />
+    <ClInclude Include="..\MTE\include\mte_jail.h" />
+    <ClInclude Include="..\MTE\include\mte_license.h" />
+    <ClInclude Include="..\MTE\include\mte_mke_dec.h" />
+    <ClInclude Include="..\MTE\include\mte_mke_enc.h" />
+    <ClInclude Include="..\MTE\include\mte_settings.h" />
+    <ClInclude Include="..\MTE\include\mte_status.h" />
+    <ClInclude Include="..\MTE\include\mte_struct.h" />
+    <ClInclude Include="..\MTE\include\mte_verifiers.h" />
+    <ClInclude Include="..\MTE\include\mte_verifier_defs.h" />
+    <ClInclude Include="..\MTE\include\mte_version.h" />
+    <ClInclude Include="..\MTE\include\mte_wrap_base.h" />
+    <ClInclude Include="..\MTE\include\mte_wrap_dec.h" />
+    <ClInclude Include="..\MTE\include\mte_wrap_enc.h" />
+    <ClInclude Include="..\MTE\include\mte_wrap_flen_enc.h" />
+    <ClInclude Include="..\MTE\include\mte_wrap_jail.h" />
+    <ClInclude Include="..\MTE\include\mte_wrap_mke_dec.h" />
+    <ClInclude Include="..\MTE\include\mte_wrap_mke_enc.h" />
+    <ClInclude Include="server_mte_helper.h" />
+    <ClInclude Include="socket_manager.h" />
+  </ItemGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>../MTE/include;../common;../ecdh/include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>../MTE/lib;../ecdh/lib;%(Link.AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>mte;mtesupport-ecdh;</LibraryDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>../MTE/include;../common;../ecdh/include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>../MTE/lib;../ecdh/lib;%(Link.AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>mte;mtesupport-ecdh;</LibraryDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>
